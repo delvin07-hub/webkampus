@@ -101,22 +101,28 @@
 
 <!-- Kartu Berita (dinamis dari database) -->
 <div class="container my-5">
-  <h2 class="mb-4 fw-bold">Berita Kampus</h2>
-  <div class="row g-4">
+  <h2 class="mb-4 text-4xl font-extrabold text-blue-900 text-center tracking-wide">
+    <span class="inline-flex items-center justify-center">
+      <i class="fas fa-newspaper text-blue-700 mr-2"></i>
+      Berita Kampus
+    </span>
+    <div class="mx-auto mt-2 w-24 h-1 bg-blue-400 rounded-full"></div>
+  </h2>
+  <div class="row g-4 justify-content-center">
     <?php
     $berita = mysqli_query($koneksi,"SELECT * FROM berita WHERE tipe='text' ORDER BY id DESC LIMIT 3");
     while($b = mysqli_fetch_array($berita)){
     ?>
-    <div class="col-md-4">
-      <div class="card card-hover">
-        <div class="card-body">
-          <h5 class="card-title">
-            <a href="detail.php?id=<?= $b['id'] ?>" class="text-decoration-none text-dark">
+    <div class="col-md-4 d-flex">
+      <div class="card border-0 shadow-lg hover:shadow-xl transition duration-300 h-100 w-100">
+        <div class="card-body d-flex flex-column justify-content-between text-center">
+          <h5 class="card-title mb-2 font-bold text-blue-900">
+            <a href="detail.php?id=<?= $b['id'] ?>" class="text-decoration-none hover:text-blue-700 transition">
               <?= htmlspecialchars($b['judul']) ?>
             </a>
-
           </h5>
-          <p><?= htmlspecialchars(substr(strip_tags($b['konten']),0,60)) ?>...</p>
+          <p class="mb-3 text-gray-700"><?= htmlspecialchars(substr(strip_tags($b['konten']),0,60)) ?>...</p>
+          <a href="detail.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-outline-primary mt-auto mx-auto">Baca Selengkapnya</a>
         </div>
       </div>
     </div>
@@ -124,26 +130,33 @@
   </div>
 </div>
 
-
 <!-- Video Section -->
-<div class="container my-5">
-  <h2 class="mb-4 fw-bold">Berita Video</h2>
-  <div class="row g-4">
-    <?php
-    $video = mysqli_query($koneksi,"SELECT * FROM berita WHERE tipe='video' ORDER BY id DESC LIMIT 2");
-    while($v = mysqli_fetch_array($video)){
-    ?>
-    <div class="col-md-6">
-      <div class="card card-hover">
-        <img src="<?= htmlspecialchars($v['thumbnail']) ?>" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title"><?= htmlspecialchars($v['judul']) ?></h5>
-          <p><?= htmlspecialchars(substr(strip_tags($v['deskripsi']),0,60)) ?>...</p>
-          <a href="<?= htmlspecialchars($v['link']) ?>" target="_blank" class="btn btn-primary">Tonton Video</a>
+<div class="py-5" style="background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);">
+  <div class="container">
+    <h2 class="mb-4 text-4xl font-extrabold text-white text-center tracking-wide">
+      <span class="inline-flex items-center justify-center">
+        <i class="fas fa-video text-yellow-300 mr-2"></i>
+        Berita Video
+      </span>
+      <div class="mx-auto mt-2 w-24 h-1 bg-yellow-300 rounded-full"></div>
+    </h2>
+    <div class="row g-4 justify-content-center">
+      <?php
+      $video = mysqli_query($koneksi,"SELECT * FROM berita WHERE tipe='video' ORDER BY id DESC LIMIT 2");
+      while($v = mysqli_fetch_array($video)){
+      ?>
+      <div class="col-md-6 d-flex">
+        <div class="card border-0 shadow-lg hover:shadow-xl transition duration-300 h-100 w-100 bg-transparent">
+          <img src="<?= htmlspecialchars($v['thumbnail']) ?>" class="card-img-top mx-auto" style="max-height:220px;object-fit:cover;">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <h5 class="card-title font-bold text-white"><?= htmlspecialchars($v['judul']) ?></h5>
+            <p class="mb-3 text-white"><?= htmlspecialchars(substr(strip_tags($v['deskripsi']),0,60)) ?>...</p>
+            <a href="<?= htmlspecialchars($v['link']) ?>" target="_blank" class="btn btn-warning mx-auto mt-auto">Tonton Video</a>
+          </div>
         </div>
       </div>
+      <?php } ?>
     </div>
-    <?php } ?>
   </div>
 </div>
 
