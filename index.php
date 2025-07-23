@@ -21,22 +21,38 @@
   </marquee>
 </div>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-primary" href="#">UNIVERSITAS DARUL ULUM</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link menu-item" href="#">Beranda</a></li>
-        <li class="nav-item"><a class="nav-link menu-item" href="#">Profil</a></li>
-        <li class="nav-item"><a class="nav-link menu-item" href="#">Akademik</a></li>
-        <li class="nav-item"><a class="nav-link menu-item" href="#">Kontak</a></li>
-      </ul>
-      <a href="login.php" class="btn btn-primary ms-lg-3"><i class="fas fa-sign-in-alt"></i> Login Admin</a>
+<!-- Navbar Tailwind -->
+<nav class="bg-blue-900 text-white shadow-md">
+  <div class="container mx-auto px-4 flex items-center justify-between h-20 py-2">
+    <a href="#" class="font-bold text-lg flex items-center">
+      <span class="mr-2"><i class="fas fa-university"></i></span> UNIVERSITAS DARUL ULUM
+    </a>
+    <div class="hidden md:flex space-x-6 items-center">
+      <a href="#" class="hover:text-yellow-300 font-semibold">Beranda</a>
+      <a href="#" class="hover:text-yellow-300 font-semibold">Profil</a>
+      <a href="#" class="hover:text-yellow-300 font-semibold">Akademik</a>
+      <a href="#" class="hover:text-yellow-300 font-semibold">Kontak</a>
+      <a href="login.php" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 px-4 py-2 rounded font-bold flex items-center">
+        <i class="fas fa-sign-in-alt mr-2"></i> Login
+      </a>
     </div>
+    <!-- Hamburger -->
+    <button id="navToggle" class="md:hidden focus:outline-none">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="navMenu" class="md:hidden hidden px-4 pb-4">
+    <a href="#" class="block py-2 hover:text-yellow-300 font-semibold">Beranda</a>
+    <a href="#" class="block py-2 hover:text-yellow-300 font-semibold">Profil</a>
+    <a href="#" class="block py-2 hover:text-yellow-300 font-semibold">Akademik</a>
+    <a href="#" class="block py-2 hover:text-yellow-300 font-semibold">Kontak</a>
+    <a href="login.php" class="block py-2 bg-yellow-400 hover:bg-yellow-500 text-blue-900 rounded font-bold mt-2">
+      <i class="fas fa-sign-in-alt mr-2"></i> Login Admin
+    </a>
   </div>
 </nav>
 
@@ -133,5 +149,12 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Toggle mobile menu
+document.getElementById('navToggle').onclick = function() {
+  var menu = document.getElementById('navMenu');
+  menu.classList.toggle('hidden');
+};
+</script>
 </body>
 </html>
